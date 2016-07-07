@@ -18,6 +18,8 @@ public class MainActivity extends AppCompatActivity {
     private static final double zoomScaler = 1.1;
     private static final int BACKGROUND_COLOR = Color.argb (255, 0, 0, 0);
     private KeplerRunner krunner;
+    Toolbar toolbar;
+    LinearLayout LL1;
 
     /** Called when the activity is first created. */
     @Override
@@ -34,8 +36,22 @@ public class MainActivity extends AppCompatActivity {
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                 LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT, 100);
 
-        LinearLayout LL1 = new LinearLayout(this);
+        LL1 = new LinearLayout(this);
         LL1.setOrientation(LinearLayout.VERTICAL);
+
+        toolbar = new Toolbar(this);
+        Toolbar.LayoutParams toolBarParams = new Toolbar.LayoutParams(
+                Toolbar.LayoutParams.MATCH_PARENT,
+                R.attr.actionBarSize
+        );
+        toolbar.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+        toolbar.setNavigationIcon(R.drawable.solar_system_icon);
+        toolbar.setTitle("");
+
+        LL1.addView(toolbar);
+        setSupportActionBar(toolbar);
+
+
 
  /*       // Create top toolbar
 
@@ -70,17 +86,21 @@ public class MainActivity extends AppCompatActivity {
         LL1.addView(krunner);
 
         setContentView(LL1);
+
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        Log.i("ANIM", "onCreateOptionsMenu");
 
         // For an overview of using the ActionBar in Android 4, see
         // http://www.vogella.com/tutorials/AndroidActionBar/article.html
 
 
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
+        //getMenuInflater().inflate(R.menu.main, menu);
+
+        toolbar.inflateMenu(R.menu.main);
 
         // Suppress the icon label on action bar
         //ActionBar actionBar = getActionBar();
@@ -109,6 +129,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
+        Log.i("ANIM", "OptionItemsSelected");
         // Handle item selection
         switch (item.getItemId()) {
 
