@@ -1,0 +1,41 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/speed_decrease"
+        android:icon="@drawable/speed_decrease"
+        android:orderInCategory="0"
+        app:showAsAction="always"
+        android:title="" />
+    <item
+        android:id="@+id/speed_increase"
+        android:icon="@drawable/speed_increase"
+        android:orderInCategory="10"
+        app:showAsAction="always"
+        android:title="" />
+    <item
+        android:id="@+id/zoom_out"
+        android:icon="@drawable/zoom_out"
+        android:orderInCategory="20"
+        app:showAsAction="always"
+        android:title=""/>
+    <item
+        android:id="@+id/zoom_in"
+        android:icon="@drawable/zoom_in"
+        android:orderInCategory="30"
+        app:showAsAction="always"
+        android:title=""/>
+
+    <item
+        android:id="@+id/toggle_labels"
+        android:orderInCategory="40"
+        app:showAsAction="never"
+        android:title="Toggle Labels"/>
+
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:title=""/>
+
+</menu>
