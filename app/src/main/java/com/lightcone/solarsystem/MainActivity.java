@@ -37,6 +37,31 @@ public class MainActivity extends AppCompatActivity {
         LinearLayout LL1 = new LinearLayout(this);
         LL1.setOrientation(LinearLayout.VERTICAL);
 
+ /*       // Create top toolbar
+
+        //Toolbar toolbar = (Toolbar) findViewById(R.id.ssmenu);
+        Toolbar toolbar = new Toolbar(this);
+        *//*Toolbar.LayoutParams toolBarParams = new Toolbar.LayoutParams(
+                Toolbar.LayoutParams.MATCH_PARENT,
+                R.attr.actionBarSize
+        );
+        toolbar.setLayoutParams(toolBarParams);*//*
+        toolbar.setBackgroundColor(Color.GREEN);
+        toolbar.setNavigationIcon(R.drawable.solar_system_icon);
+        //toolbar.setTitle("");
+        //toolbar.setPopupTheme(R.style.AppTheme_PopupOverlay);
+        //toolbar.setVisibility(View.VISIBLE);
+        // Remove default toolbar title and replace with an icon
+        if(toolbar == null)Toast.makeText(this,"toobar is null",Toast.LENGTH_LONG).show();
+        if (toolbar != null) {
+            toolbar.setNavigationIcon(R.mipmap.ic_launcher);
+            // Note: getColor(color) deprecated as of API 23
+            toolbar.setTitleTextColor(getResources().getColor(R.color.barTextColor));
+            //toolbar.setTitle("");
+            //setSupportActionBar(toolbar);
+        }*/
+
+
         // Instantiate the class MotionRunner to define the entry screen display
         krunner = new KeplerRunner(this);
         krunner.setLayoutParams(lp);
@@ -58,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.main, menu);
 
         // Suppress the icon label on action bar
-        ActionBar actionBar = getActionBar();
+        //ActionBar actionBar = getActionBar();
         //actionBar.setTitle("Title");
         //actionBar.setSubtitle("Subtitle");
         return true;
