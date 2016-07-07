@@ -4,6 +4,5 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
 
-    <color name="barColor">#000000</color>
-    <color name="barTextColor">#ffffff</color>
+    <color name="toolbarColor">#666666</color>
 </resources>

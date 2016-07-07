@@ -39,11 +39,8 @@ public class MainActivity extends AppCompatActivity {
         LL1 = new LinearLayout(this);
         LL1.setOrientation(LinearLayout.VERTICAL);
 
+        // Create top toolbar
         toolbar = new Toolbar(this);
-        Toolbar.LayoutParams toolBarParams = new Toolbar.LayoutParams(
-                Toolbar.LayoutParams.MATCH_PARENT,
-                R.attr.actionBarSize
-        );
         toolbar.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
         toolbar.setNavigationIcon(R.drawable.solar_system_icon);
         toolbar.setTitle("");
