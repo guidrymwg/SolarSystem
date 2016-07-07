@@ -1,6 +1,5 @@
 package com.lightcone.solarsystem;
 
-import android.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -16,12 +15,11 @@ public class MainActivity extends AppCompatActivity {
 
     private static final double delayScaler = 1.2;
     private static final double zoomScaler = 1.1;
-    private static final int BACKGROUND_COLOR = Color.argb (255, 0, 0, 0);
+    private static final int BACKGROUND_COLOR = Color.argb(255, 0, 0, 0);
     private KeplerRunner krunner;
     Toolbar toolbar;
     LinearLayout LL1;
 
-    /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,48 +37,27 @@ public class MainActivity extends AppCompatActivity {
         LL1 = new LinearLayout(this);
         LL1.setOrientation(LinearLayout.VERTICAL);
 
-        // Create top toolbar
+        // Create top toolbar using code rather than xml.  Note that this assumes that in styles.xml
+        // a no action bar theme is set: <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+
         toolbar = new Toolbar(this);
         toolbar.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
         toolbar.setNavigationIcon(R.drawable.solar_system_icon);
         toolbar.setTitle("");
 
+        // Attach the toolbar to the view
         LL1.addView(toolbar);
         setSupportActionBar(toolbar);
 
+        // Instantiate the class MotionRunner to define the entry screen display and add it
+        // to the view.
 
-
- /*       // Create top toolbar
-
-        //Toolbar toolbar = (Toolbar) findViewById(R.id.ssmenu);
-        Toolbar toolbar = new Toolbar(this);
-        *//*Toolbar.LayoutParams toolBarParams = new Toolbar.LayoutParams(
-                Toolbar.LayoutParams.MATCH_PARENT,
-                R.attr.actionBarSize
-        );
-        toolbar.setLayoutParams(toolBarParams);*//*
-        toolbar.setBackgroundColor(Color.GREEN);
-        toolbar.setNavigationIcon(R.drawable.solar_system_icon);
-        //toolbar.setTitle("");
-        //toolbar.setPopupTheme(R.style.AppTheme_PopupOverlay);
-        //toolbar.setVisibility(View.VISIBLE);
-        // Remove default toolbar title and replace with an icon
-        if(toolbar == null)Toast.makeText(this,"toobar is null",Toast.LENGTH_LONG).show();
-        if (toolbar != null) {
-            toolbar.setNavigationIcon(R.mipmap.ic_launcher);
-            // Note: getColor(color) deprecated as of API 23
-            toolbar.setTitleTextColor(getResources().getColor(R.color.barTextColor));
-            //toolbar.setTitle("");
-            //setSupportActionBar(toolbar);
-        }*/
-
-
-        // Instantiate the class MotionRunner to define the entry screen display
         krunner = new KeplerRunner(this);
         krunner.setLayoutParams(lp);
-
         krunner.setBackgroundColor(BACKGROUND_COLOR);
         LL1.addView(krunner);
+
+        // Set the view as the display
 
         setContentView(LL1);
 
@@ -88,21 +65,10 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        Log.i("ANIM", "onCreateOptionsMenu");
 
-        // For an overview of using the ActionBar in Android 4, see
-        // http://www.vogella.com/tutorials/AndroidActionBar/article.html
-
-
-        // Inflate the menu; this adds items to the action bar if it is present.
-        //getMenuInflater().inflate(R.menu.main, menu);
-
+        // Inflate the toolbar menu
         toolbar.inflateMenu(R.menu.main);
 
-        // Suppress the icon label on action bar
-        //ActionBar actionBar = getActionBar();
-        //actionBar.setTitle("Title");
-        //actionBar.setSubtitle("Subtitle");
         return true;
     }
 
@@ -111,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
         super.onPause();
         // Stop animation loop if going into background
         krunner.stopLooper();
-        Log.i("ANIM","onPause");
+        Log.i("ANIM", "onPause");
     }
 
     @Override
@@ -119,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         // Resume animation loop
         krunner.startLooper();
-        Log.i("ANIM","onResume");
+        Log.i("ANIM", "onResume");
     }
 
     // Process action bar menu items
@@ -137,10 +103,10 @@ public class MainActivity extends AppCompatActivity {
 
             // Run faster
             case R.id.speed_increase:
-                long test = krunner.setDelay(1/delayScaler);
+                long test = krunner.setDelay(1 / delayScaler);
 
                 // Method setDelay() returns -2 if new delay would be < 1
-                if(test == -2){
+                if (test == -2) {
                     Toast.makeText(this, "Maximum speed. Can't increase",
                             Toast.LENGTH_SHORT).show();
                 }
@@ -148,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
 
             // Zoom out
             case R.id.zoom_out:
-                krunner.setZoom(1/zoomScaler);
+                krunner.setZoom(1 / zoomScaler);
                 return true;
 
             // Zoom in
