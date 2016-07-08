@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Set background color.  Handle method getColor deprecated as of API 23
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                toolbar.setBackgroundColor(getResources().getColor(R.color.colorPrimary, null));
+            toolbar.setBackgroundColor(getResources().getColor(R.color.colorPrimary, null));
         } else {
             toolbar.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
         }
