@@ -1,5 +1,7 @@
 package com.lightcone.solarsystem;
 
+import android.content.res.Resources;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -24,12 +26,12 @@ public class MainActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-               /* In the following we lay out the screen entirely in code (activity_main.xml
-               * isn't used).  We wish to lay out a stage for planetary motion using LinearLayout.
-               * The instance krunner of KeplerRunner is added to a LinearLayout LL1 using addView.
-               * Then we use setContent to set the content view to LL1. The formatting of the layouts
-               * is controlled using the LinearLayout.LayoutParams lp.
-               * */
+       /* In the following we lay out the screen entirely in code (activity_main.xml
+       * isn't used).  We wish to lay out a stage for planetary motion using LinearLayout.
+       * The instance krunner of KeplerRunner is added to a LinearLayout LL1 using addView.
+       * Then we use setContent to set the content view to LL1. The formatting of the layouts
+       * is controlled using the LinearLayout.LayoutParams lp.
+       * */
 
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                 LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT, 100);
@@ -40,13 +42,23 @@ public class MainActivity extends AppCompatActivity {
         // Create top toolbar using code rather than xml.  Note that this assumes that in styles.xml
         // a no action bar theme is set: <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
 
+        // Instantiate a Toolbar from its constructor and add properties to it
         toolbar = new Toolbar(this);
-        toolbar.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+
+        // Set background color.  Handle method getColor deprecated as of API 23
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                toolbar.setBackgroundColor(getResources().getColor(R.color.colorPrimary, null));
+        } else {
+            toolbar.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+        }
+
         toolbar.setNavigationIcon(R.drawable.solar_system_icon);
         toolbar.setTitle("");
 
         // Attach the toolbar to the view
         LL1.addView(toolbar);
+
+        // Set the toolbar as the ActionBar for this window
         setSupportActionBar(toolbar);
 
         // Instantiate the class MotionRunner to define the entry screen display and add it
