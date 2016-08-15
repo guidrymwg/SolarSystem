@@ -165,8 +165,7 @@ public class KeplerRunner extends View implements OnClickListener, OnLongClickLi
 
     public void startAnimation() {
 
-        // Operation on background thread that updates the main
-        // thread through handler.
+        // Operation on background thread that updates the main thread through handler.
 
         Log.i(TAG, "startAnimation()");
 
@@ -341,7 +340,7 @@ public class KeplerRunner extends View implements OnClickListener, OnLongClickLi
                 canvas.rotate(orientDeg[i]);
                 phi = 0;
 
-                // Increase density of plot points for very elliptical orbits to resolve their narrow shapes
+                // Increase density of plot points for very elliptical orbits to resolve their shapes
                 int plotpoints = numpoints;
                 double delphi = dphi;
                 if (epsilon[i] > 0.7) {
